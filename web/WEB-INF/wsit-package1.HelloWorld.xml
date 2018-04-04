@@ -9,6 +9,8 @@
     <message name="getHelloWorldAsStringResponse"/>
     <message name="getProducts"/>
     <message name="getProductsResponse"/>
+    <message name="getHelloDarknessMyOldFriend"/>
+    <message name="getHelloDarknessMyOldFriendResponse"/>
     <portType name="HelloWorld">
         <operation name="getHelloWorldAsString">
             <input message="tns:getHelloWorldAsString"/>
@@ -17,6 +19,10 @@
         <operation name="getProducts">
             <input message="tns:getProducts"/>
             <output message="tns:getProductsResponse"/>
+        </operation>
+        <operation name="getHelloDarknessMyOldFriend">
+            <input message="tns:getHelloDarknessMyOldFriend"/>
+            <output message="tns:getHelloDarknessMyOldFriendResponse"/>
         </operation>
     </portType>
     <binding name="HelloWorldPortBinding" type="tns:HelloWorld">
@@ -27,6 +33,11 @@
         <operation name="getProducts">
             <input></input>
             <output></output>
+        </operation>
+        <operation name="getHelloDarknessMyOldFriend">
+            <input/>
+            <output/>
+            <fault/>
         </operation>
     </binding>
     <service name="HelloWorldService">

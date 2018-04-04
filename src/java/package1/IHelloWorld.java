@@ -22,7 +22,10 @@ public interface IHelloWorld {
     //@WebMethod(action = "aleAkcja") // zmienia sie input wsam:Action
     //@WebMethod(operationName = "aleOperacja")
     @WebMethod(exclude = false)
-    String getHelloWorldAsString(String name);
+    String getHelloWorldAsString (String name);
+    
+    @WebMethod(exclude = false)
+    String getHelloDarknessMyOldFriend (String name) throws InvalidInputException ;
 
     @WebMethod
     List<Product> getProducts();

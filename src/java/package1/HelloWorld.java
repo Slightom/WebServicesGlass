@@ -3,6 +3,8 @@ package package1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
@@ -12,15 +14,19 @@ import javax.xml.ws.handler.MessageContext;
 
 public class HelloWorld implements IHelloWorld {
 
+    String username = "";
+    String password = "";
+
     @Resource
     WebServiceContext wsctx;
 
     @Override
     public String getHelloWorldAsString(String name) {
+
         if (userValid()) {
             return "Witaj świecie JAX-WS: " + name;
         } else {
-            return "Unknown User!";
+            return "Unknown User: " + username;
         }
     }
 
@@ -49,9 +55,6 @@ public class HelloWorld implements IHelloWorld {
         List userList = (List) http_headers.get("Username");
         List passList = (List) http_headers.get("Password");
 
-        String username = "";
-        String password = "";
-
         if (userList != null) {
             //get username
             username = userList.get(0).toString();
@@ -67,6 +70,15 @@ public class HelloWorld implements IHelloWorld {
             return false;
         } else {
             return true;
+        }
+    }
+
+    @Override
+    public String getHelloDarknessMyOldFriend(String name) throws InvalidInputException {
+        if (name.equals("kemot")) {
+            throw new InvalidInputException("Palindromów nie przyjmujemy: ", name);
+        }else{
+            return "Hello darkness. Name: " + name;
         }
     }
 
